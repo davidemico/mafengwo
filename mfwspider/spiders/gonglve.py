@@ -93,8 +93,9 @@ class Mfwspider(Spider):
 
         ct = Selector(response)
 
-
+        # 获取攻略页链接
         gonglve_link = ct.xpath('//*[@class="navbar-btn"]/@href').extract()[0]
+        # 获取城市名
         city_name = response.meta.get('name')
 
         yield Request(self.domains_url + gonglve_link,callback=self.gong_lve,
